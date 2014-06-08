@@ -2,6 +2,7 @@
 #include "json.h"
 
 #include "Simulation.h"
+#include "ResultSummary.h"
 
 #ifdef __GNUC__
 #include <execinfo.h>
@@ -73,9 +74,19 @@ int main(int argc, char* argv[])
 		sim::Simulation simulation(jsonData);
 		simulation.execute();
 
+		/*
+		// Originally, the simulator outputs sophisticated results in JSON format to stdout.
+		// Those results are then used by the simulation backend to generate statistics, which can be displayed to the user.
+
 		json_spirit::Object results = simulation.getJSONResults();
 		std::string json = json_spirit::write(results, json_spirit::remove_trailing_zeros);
 		std::cout << json << std::endl;
+		*/
+
+		// for the contest, print a simple summary only
+		sim::ResultSummary summary(&simulation);
+		summary.printResults();
+
 	}
 #ifdef NDEBUG
 	catch(const std::runtime_error& re)

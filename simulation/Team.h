@@ -74,6 +74,15 @@ public:
 		assert (place > 0 && place < MAXPLACES);
 		placeHistogram[place] += 1;
 	}
+	int getPlaceCount(int place)
+	{
+		assert(place > 0 && place < MAXPLACES);
+		return placeHistogram[place];
+	}
+
+	int getWins() { return statisticalData[StatisticalDataKeys::TotalWins]; }
+	int getLosses() { return statisticalData[StatisticalDataKeys::TotalLosses]; }
+	int getMatchCount() { return statisticalData[StatisticalDataKeys::TotalMatches]; }
 
 	// returns the total number of places given to this team - for plausibility checks
 	int getTotalPlaceCount();
