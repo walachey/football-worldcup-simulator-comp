@@ -8,7 +8,8 @@ Quick instructions:
 
 In short:
 	git clone https://github.com/walachey/football-worldcup-simulator-comp.git
-	git submodule foreach git pull origin master
+	cd <repository_directory>
+	git submodule update --init --recursive
 	cd simulation
 	make
 	
