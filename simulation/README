@@ -1,0 +1,47 @@
+INSTALLATION
+=================
+Quick instructions:
+-------------------
+* Check out the whole project from github (https://github.com/walachey/football-worldcup-simulator-comp) with git
+* Update the submodule simulation/deps
+* In simulation/, run "make" or use the MSVC project
+
+In short:
+	git clone https://github.com/walachey/football-worldcup-simulator-comp.git
+	git submodule foreach git pull origin master
+	cd simulation
+	make
+	
+Long instructions:
+------------------
+* Getting the dependencies:
+	The project depends on the boost and JSON-spirit libraries. 
+	You can EITHER use the prepared dependencies: 
+	* https://github.com/walachey/football-worldcup-simulator-deps/archive/master.zip
+	
+	OR use the github repository for the dependencies directly:
+	* https://github.com/walachey/football-worldcup-simulator-deps
+	
+	OR download the dependencies manually:
+	* http://sourceforge.net/projects/boost/files/boost/1.55.0/
+	* http://www.codeproject.com/Articles/20027/JSON-Spirit-A-C-JSON-Parser-Generator-Implemented
+	
+	The dependencies have to be extracted into simulation/deps/.
+	
+* Building the project:
+	* Windows:
+		Open the Visual Studio 2013 solution and select "Build->Build Solution".
+	* Linux/MinGW:
+		Run "make".
+
+
+RUNNING THE SIMULATION
+======================
+The simulator receives its configuration and the teams' data via JSON-formatted input.
+The input can either be passed via stdin or be read from a file (option "-f <filename>").
+The simulator will then run as many simulations as specified in the file and output a summary of the results to stdout.
+
+If the simulator executable is called "simulator", an example usage would be:
+	* simulator -f input.json
+	* simulator < input.json
+	
