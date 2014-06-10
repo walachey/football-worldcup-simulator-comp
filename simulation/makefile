@@ -22,9 +22,11 @@ ifdef MOVE
 endif
 
 obj/%.o: %.cpp
+	@mkdir -p $(@D)
 	g++ -c -o $@ $< $(CC_FLAGS)
 
 obj/%.o: deps/json_spirit/%.cpp
+	@mkdir -p $(@D)
 	g++ -c -o $@ $< $(CC_FLAGS)
 
 clean:
