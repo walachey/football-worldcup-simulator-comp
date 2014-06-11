@@ -24,7 +24,7 @@ double ResultSummary::getChanceForKnockout(int teamID, int bofRound)
 	for (auto &cluster : simulation->clusterMatchResultStatisticsLists)
 	{
 		auto &results = cluster.second;
-		if (results.bofRound != bofRound) continue;
+		if (results.bofRound != bofRound || cluster.first == "all") continue;
 		
 		// sum up losses of team over all matches in the specified best-of-X round
 		totalLosses += simulation->clusterTeamResults[cluster.first][teamID].getLosses();
@@ -41,7 +41,7 @@ int ResultSummary::getParticipationCount(int teamID, int bofRound)
 	for (auto &cluster : simulation->clusterMatchResultStatisticsLists)
 	{
 		auto &results = cluster.second;
-		if (results.bofRound != bofRound) continue;
+		if (results.bofRound != bofRound || cluster.first == "all") continue;
 
 		// sum up losses of team over all matches in the specified best-of-X round
 		totalParticipations += simulation->clusterTeamResults[cluster.first][teamID].getMatchCount();
